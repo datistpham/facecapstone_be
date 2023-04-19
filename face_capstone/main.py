@@ -45,8 +45,7 @@ mycursor = mydb.cursor()
 def process(img_path):
 
     model_dir = 'Silent_Face_Anti_Spoofing/resources/anti_spoof_models'
-    vid = cv2.VideoCapture(0)
-
+   
     model_test = AntiSpoofPredict(0)
     image_cropper = CropImage()
     

@@ -8,6 +8,18 @@ from Silent_Face_Anti_Spoofing.src.anti_spoof_predict import AntiSpoofPredict
 from Silent_Face_Anti_Spoofing.src.generate_patches import CropImage
 from Silent_Face_Anti_Spoofing.src.utility import parse_model_name
 
+def gen_pkl():
+    tmp_img = np.zeros((1,1,3))
+    df = DeepFace.find(tmp_img,
+                db_path = "db_face", 
+                model_name = 'ArcFace',
+                distance_metric= 'cosine',
+                enforce_detection= False,
+                detector_backend= 'skip',
+                silent=True
+            )
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--name')
 
@@ -40,3 +52,5 @@ while(True):
             people_name = '0'
         cv2.imwrite(os.path.join("db_face", people_name + '.jpg'), face_image)
         break
+
+gen_pkl()
